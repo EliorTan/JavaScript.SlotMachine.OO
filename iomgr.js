@@ -44,28 +44,36 @@ class IOMgr {
 
             const numberOfLines = parseFloat(lines);
 
-            if (!isNaN(numberOfLines) && numberOfLines <= 3) {
-                this.printMsg("Your bettin on " + numberOfLines)
+            if (!isNaN(numberOfLines) && numberOfLines > 0 && numberOfLines <= 3) {
+                this.printMsg("Your bettin on " + numberOfLines+ "rows")
                 return numberOfLines;
             }
 
             this.printMsg("Invalid number of lines, try again");
         }
     }
-    getBet(){
+    getBet(validationFunc){
         while (true) {
             let bet = this._prompt("Enter the bet per line [5$]: ")
             if (bet.length === 0) 
                 bet = 3
 
-            const numberOfLines = parseFloat(bet);
+            const numberBet = parseFloat(bet);
 
-            if (!isNaN(numberOfLines) && numberOfLines <= 3) {
-                this.printMsg("Your bettin on " + numberOfLines)
-                return numberOfLines;
+            if (validationFunc(numberBet)) {
+                this.printMsg("Your bettin on " + numberBet)
+                return numberBet;
             }
 
             this.printMsg("Invalid number of lines, try again");
         }
+    }
+
+    getPlayAgain(){
+        let playAgain = this._prompt("Do you want to play again (y/n): ")
+        if (playAgain.length === 0)
+            playAgain = "y";
+
+        return playAgain;
     }
 }
