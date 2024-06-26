@@ -1,6 +1,5 @@
 import Row from './row.js';
 
-
 class Board {
     constructor(rowsNum, columnsNum) {
         this.rowsNum = rowsNum;
@@ -8,7 +7,7 @@ class Board {
 
         this.rows = []; // collection of Row (s)
         for (let i = 0; i < this.rowsNum; i++) {
-            this.rows.push(new Row);
+            this.rows.push(new Row(this.columnsNum));
         }
     }
 
@@ -16,13 +15,13 @@ class Board {
         this.rows.forEach(row => row.spin());
     }
 
-    getFormattedString () {
+    getFormattedString() {
         let res = "";
         this.rows.forEach(row => res += row.print() + "\n");
         return res;
     }
 
-    checkWins () {
+    checkWins() {
         let res = "";
         this.rows.forEach(row => res += row.checkWins());
         return res;

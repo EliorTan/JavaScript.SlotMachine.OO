@@ -45,7 +45,7 @@ class IOMgr {
             const numberOfLines = parseFloat(lines);
 
             if (!isNaN(numberOfLines) && numberOfLines > 0 && numberOfLines <= 3) {
-                this.printMsg("Your bettin on " + numberOfLines+ "rows")
+                this.printMsg("Your bettin on " + numberOfLines + " rows")
                 return numberOfLines;
             }
 
@@ -56,7 +56,7 @@ class IOMgr {
         while (true) {
             let bet = this._prompt("Enter the bet per line [5$]: ")
             if (bet.length === 0) 
-                bet = 3
+                bet = 5
 
             const numberBet = parseFloat(bet);
 
@@ -65,7 +65,7 @@ class IOMgr {
                 return numberBet;
             }
 
-            this.printMsg("Invalid number of lines, try again");
+            this.printMsg("Invalid bet, try again");
         }
     }
 
@@ -77,3 +77,5 @@ class IOMgr {
         return playAgain;
     }
 }
+
+export default IOMgr;

@@ -29,9 +29,9 @@ class Row {
         this.rowArr = [];
         const rowSymbols = [...Row._symbols];
         for (let i = 0; i < this.columnsNum; i++) {
-            const randomIndex = Math.floor(Math.random()) * rowSymbols.length;
-            const selectedStymbol = rowSymbols[randomIndex];
-            this.rowArr.push(selectedStymbol);
+            const randomIndex = Math.floor(Math.random() * rowSymbols.length);
+            const selectedSymbol = rowSymbols[randomIndex];
+            this.rowArr.push(selectedSymbol);
             rowSymbols.splice(randomIndex, 1);
         }
     }
